@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Your existing styles remain unchanged */
+    img {
+      max-width: 60%;
+      height: auto;
+    }
+    
+  </style>
+</head>
+<div class="row">
+    <div class="col-md-3">
+        <div id="header_tools"> <!-- Start outils -->
+            <div class="lang">
+                <ul class="lang_list">
+                     <a href="https://tinfat24.blogspot.com/2024/02/ary.html">Darija</a> •
+                     <a href="https://tinfat24.blogspot.com/2024/02/es.html">Español</a> •
+                     <span class="active_lang">ⵜⴰⵎⴰⵣⵉⵖⵜ</span> •
+                     <a href="https://tinfat24.blogspot.com/2024/02/en.html">English</a> 
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <style>
+    body {
+      font-family: arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 20px;
+      color: #333;
+    }
+    .frame {
+      border: 1px solid #01B276;
+      padding: 10px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .converter-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    input, button, select {
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 100%;
+    }
+    button {
+      background-color: #ecf0f1;
+      color: black;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #01B276;
+    }
+    .output {
+      padding: 10px;
+      background-color: #ecf0f1;
+      border-radius: 5px;
+      min-height: 50px;
+      margin-top: 10px;
+    }
+    h1 {
+      color: #333;
+    }
+    .module {
+      background-color: #ecf0f1;
+      color: #ffffff;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 10px 0;
+      text-align: center;
+      img {
+      max-width: 30%;
+      height: auto;
+    }
+        
+    }
+    small {
+      color: #333;
+      display: block;
+      margin-top: 1px;
+     * padding: 1px;
+      
+    }
+  </style>
+<body>
+<div class="frame">
+  <div class="converter-container">
+    <center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioivwpdSZ9_KUkX8a0zCOTL6uR0n_Ogxc5JmDtETlBKrx07lCyF2M4iWlZ7qB8yBBOa7d7tLp69LdrpfFrkTZFOYw5HWCDdEgETEXRfJlTYYg-kdAkAqOrL78HmyE3Po132CKpUE8OEb2CPcKDuNejX8RsgZnJdWDT41acTJrkwybUkZ5EVeH0SHbmrVE/s3000/20240216_174918.webp" alt="Tifinagh Converter Image"></center>
+    <select id="languageSelect">
+      <option value="tifinagh">ⵜⵉⴼⵉⵏⴰⵖ</option>
+      <option value="latin">Latin</option>
+    </select>
+    <input type="text" id="inputText" placeholder="ⴰⵔⴰ ⵜⵉⵔⵔⴰ ⵖⵉⴷ">
+    <button onclick="convertText()">ⵙⵡⴰⵍⴰ</button>
+    <div class="output" id="outputText"></div>
+  </div>
+<div class="module">
+  <small><p>ⵉⵜⵜⵓⵙⵖⵉⵡⵙ ⴳ &hearts; ⴷ:</p>
+    <a href="https://www.fb.me/Aksel.tinfat"> <center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_SeXFQH5E1goHDY-OB4CQcuKdKF3ps0Fuf6ZH3oXwOIprqiN_z7qx4L8of0c44mt4DSy_sWjw8Va5spPIrb7kIjQZV0rUJpPYYTRJmEn-sdofio8PaJT8NwjPfYcKQwfeg88H3KnmGmrWVnuhBOElJAac9Rn3VQxurQJZ_BxM-tFkekCKxZETfHYBk1Y/s3000/20240208_163131.png" alt="Aksel Tinfat "></center></a>
+</div>
+<script>
+  const languageSelect = document.getElementById('languageSelect');
+  const tifinaghToLatinMap = {
+ 'ⴰ':'A','ⴱ':'B','ⵛ':'C','ⴷ':'D','ⴻ':'E','ⴼ':'F','ⴳ':'G','ⵀ':'H','ⵉ':'I','ⵊ':'J','ⴽ':'K','ⵍ':'L','ⵎ':'M','ⵏ':'N','ⵓ':'u','ⵒ':'P','ⵇ':'Q','ⵔ':'R','ⵙ':'S','ⵜ':'T','ⴼ':'V','ⵡ':'W','ⵅ':'X','ⵢ':'Y','ⵣ':'Z','ⴽⵯ':'kʷ','ⵯ':'ʷ','ⵇⵯ':'Qʷ','ⵖ':'ɣ','ⵄ':'ɛ','ⵓ':'u','ⵥ':'Z','ⵥ':'ẓ','ⴰ':'a','ⴱ':'b','ⵛ':'c','ⴷ':'d','ⴻ':'e','ⴼ':'f','ⴳ':'g','ⵀ':'h','ⵉ':'i','ⵊ':'j','ⴽ':'k','ⵍ':'l','ⵎ':'m','ⵏ':'n','ⵓ':'o','ⵒ':'p','ⵇ':'q','ⵔ':'r','ⵙ':'s','ⵜ':'t','ⵡ':'w','ⵅ':'x','ⵢ':'y','ⵣ':'z','ⴽⵯ':'kʷ','ⵯ':'ʷ','ⵇⵯ':'qʷ','ⵖ':'ɣ','ⵄ':'ɛ','ⵓ':'u','ⵥ':'z','ⵥ':'ẓ','ⵕ':'ṛ','ṭ':'ⵟ','ⵚ':'ṣ','ⵃ':'ḥ','ⵟ':'ṭ'
+
+    // ...ⵙⵎⴷ ⴰⴽⴽⵯ ⵉⵙⴽⴽⵉⵍⵏ ⵏ ⵜⴼⵉⵏⴰⵖ ⵖⵉⴷ.
+  };
+
+  const latinToTifinaghMap = {
+ 'A':'ⴰ','B':'ⴱ','C':'ⵛ','D':'ⴷ','E':'ⴻ','F':'ⴼ','G':'ⴳ','H':'ⵀ','I':'ⵉ','J':'ⵊ','K':'ⴽ','L':'ⵍ','M':'ⵎ','N':'ⵏ','U':'ⵓ','P':'ⵒ','Q':'ⵇ','R':'ⵔ','S':'ⵙ','T':'ⵜ','V':'ⴼ','W':'ⵡ','X':'ⵅ','Y':'ⵢ','Z':'ⵣ','kʷ':'ⴽⵯ','ʷ':'ⵯ','Qʷ':'ⵇⵯ','ɣ':'ⵖ','ɛ':'ⵄ','ẓ':'ⵥ','a':'ⴰ','b':'ⴱ','c':'ⵛ','d':'ⴷ','e':'ⴻ','f':'ⴼ','g':'ⴳ','h':'ⵀ','i':'ⵉ','j':'ⵊ','k':'ⴽ','l':'ⵍ','m':'ⵎ','n':'ⵏ','p':'ⵒ','q':'ⵇ','r':'ⵔ','s':'ⵙ','t':'ⵜ','v':'ⴼ','w':'ⵡ','x':'ⵅ','y':'ⵢ','z':'ⵣ','kʷ':'ⴽⵯ','ʷ':'ⵯ','qʷ':'ⵇⵯ','ɣ':'ⵖ','ɛ':'ⵄ','o':'ⵄ','z':'ⵣ','ẓ':'ⵥ','ṛ':'ⵕ','ṣ':'ⵚ','ḥ':'ⵃ','Ẓ':'ⵥ','Ṛ':'ⵕ','Ṣ':'ⵚ','Ḥ':'ⵃ','Ṭ':'ⵟ','u':'ⵓ','ṭ':'ⵟ',
+    // ...add all Latin to Tifinagh mappings here.
+  };
+
+  function convertText() {
+    const inputText = document.getElementById('inputText').value;
+    const selectedLanguage = languageSelect.value;
+    let outputText = '';
+
+    if (selectedLanguage === 'tifinagh') {
+      // ⵙⵡⴰⵍⴰ ⵙⴳ ⵜⴼⵉⵏⴰⵖ ⵖⵔ ⵜⵍⴰⵜⵉⵏⵜ
+      for (let char of inputText) {
+        outputText += tifinaghToLatinMap[char] || char;
+      }
+    } else {
+      // Convert from Latin to Tifinagh
+      for (let char of inputText) {
+        outputText += latinToTifinaghMap[char] || char;
+      }
+    }
+
+    document.getElementById('outputText').textContent = outputText;
+  }
+</script>
+</body>
+</html>
